@@ -9,6 +9,9 @@ Accesspoint Standardzugang (änderbar):
 SSID: GlyCon  
 Kennwort: chillmybeer!  
 
+Der Quellcode ist lückenfrei kommentiert. Und zwar in C++ ! :-).  
+Komm damit klar oder nicht ....  
+
 
 Schaltplan:  
   
