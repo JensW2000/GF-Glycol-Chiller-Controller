@@ -12,7 +12,7 @@ Kennwort: chillmybeer
 
 Schaltplan:  
   
-![](https://github.com/JensW2000/GF-Glycol-Chiller-Controller/blob/master/Schaltplan/GlycolChiller_Steckplatine.png)  
+![](https://github.com/JensW2000/GF-Glycol-Chiller-Controller/blob/master/Schaltplan.png)  
  
 Bilder:  
 ![](https://github.com/JensW2000/GF-Glycol-Chiller-Controller/blob/master/_images/0.jpg)  
