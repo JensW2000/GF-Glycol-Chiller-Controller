@@ -7,7 +7,7 @@ Das Senden der Daten an Ubidots wird unterstützt. Pro aktiviertem Port werden S
 
 Accesspoint Standardzugang (änderbar):  
 SSID: GlyCon  
-Kennwort: chillmybeer  
+Kennwort: chillmybeer!  
 
 
 Schaltplan:  
