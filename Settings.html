@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <style>
+        input {
+            padding: 5px;
+            font-size: 1em;
+            width: 95%;
+            filter: invert(100%);
+        }
+
+        body {
+            text-align: center;
+            font-family: verdana;
+            background-color: black;
+            color: white;
+        }
+
+        a {
+            color: #1fa3ec;
+        }
+
+        button {
+            border: 0;
+            margin-top: 1px;
+            margin-bottom: 2px;
+            border-radius: 0.3em;
+            background-color: #1fa3ec;
+            color: #fff;
+            line-height: 2.4em;
+            font-size: 1.2em;
+            width: 100%;
+            display: block;
+        }
+
+        .q {
+            float: right;
+        }
+
+        .s {
+            display: inline-block;
+            width: 14em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        #wl {
+            line-height: 1.5em;
+        }
+
+        table {
+            border: 1px solid gray;
+            border-spacing: 0;
+            width: 100%;
+        }
+
+            table .th {
+                background-color: gray;
+                text-align: center;
+            }
+
+            table .ti {
+                background-color: gray;
+                width: 10px;
+            }
+
+        .tdTemp {
+            width: 20%;
+            text-align: right;
+        }
+
+        .tdPumpe {
+            text-align: center;
+        }
+
+        td {
+            padding-right: 3px;
+            padding-left: 3px;
+        }
+
+        .box {
+            border: 1px solid gray;
+            background-color:#333;
+            margin-bottom:10px;
+        }
+        .box h3 {
+            margin:0;
+            color:#3084a8;
+        }
+        label {
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: block;
+        }
+
+            label:hover {
+                background: #444;
+                cursor: pointer;
+            }
+            label input {
+                width:auto;
+                display:inline;
+                margin-right:10px;
+            }
+    </style>
+</head>
+<body>
+    <h2 id="h2">Glycol Chiller<br />Konfiguration</h2>
+    <div style='text-align:left;display:inline-block;width:300px;padding:5px'>
+        <form style="margin:0; padding:0;" method="get" action="/settings.html">
+            <div class="box">
+                <h3>Port 1</h3>
+                <label><input type="checkbox" name="port0Enabled"  />Port benutzt</label>
+                <label>Sudname</label>
+                <input type="text" name="port0SudName" maxlength="20"  value=""/><br />
+                <label>Temperatur(-1-26)</label>
+                <input type="number" max="26" min="-1" name="port0Temp" required step="0.1" value=""/> 
+                <label>Hysterese</label>
+                <input type="number" max="2" min="0.1" name="port0Hysterese" required step="0.1" value="" />
+            </div>
+            <div class="box">
+                <h3>Port 2</h3>
+                <label><input type="checkbox" name="port1Enabled"  />Port benutzt</label>
+                <label>Sudname</label>
+                <input type="text" name="port1SudName" maxlength="20"  value=""/><br />
+                <label>Temperatur(-1-26)</label>
+                <input type="number" max="26" min="-1" name="port1Temp" required step="0.1"  value=""/>
+                <label>Hysterese</label>
+                <input type="number" max="2" min="0.1" name="port1Hysterese" required step="0.1" value="" />
+            </div>
+            <div class="box">
+                <h3>Port 3</h3>
+                <label><input type="checkbox" name="port2Enabled" />Port benutzt</label>
+                <label>Sudname</label>
+                <input type="text" name="port2SudName" maxlength="20"  value=""/><br />
+                <label>Temperatur(-1-26)</label>
+                <input type="number" max="26" min="-1" name="port2Temp" required step="0.1"  value=""/>
+                <label>Hysterese</label>
+                <input type="number" max="2" min="0.1" name="port2Hysterese" required step="0.1" value="" />
+            </div>
+            <div class="box">
+                <h3>Port 4</h3>
+                <label><input type="checkbox" name="port3Enabled"  />Port benutzt</label>
+                <label>Sudname</label>
+                <input type="text" name="port3SudName" maxlength="20" value=""/><br />
+                <label>Temperatur(-1-26)</label>
+                <input type="number" max="26" min="-1" name="port3Temp" required step="0.1" value="" />
+                <label>Hysterese</label>
+                <input type="number" max="2" min="0.1" name="port3Hysterese" required step="0.1" value="" />
+            </div>
+            <div class="box">
+                <h3>Ubidots</h3>
+                <label><input type="checkbox" name="ubidotsEnabled" />Daten senden</label>
+                <label>Token</label>
+                <input type="text" name="ubidotsToken" maxlength="30" value="" /><br />
+                <label>Intervall (1-60 Minuten)</label>
+                <input type="number" max="60" min="0" name="ubidotsIntervall" required step="1" value="" />
+            </div>
+            <input type="hidden" name="saveAction" value="save" />
+            <hr />
+            <button type="submit" id="btnSave" formaction="/settings.html">Speichern</button>
+        </form>
+        <hr />
+        <form style="margin:0; padding:0;" method="get" action="/index.html">
+            <button type="submit" id="btnUpdate" formaction="/index.html">Status</button>
+            <button type="submit" id="btnWiFi" formaction="/wifi.html" formmethod="post">WiFi Einstellungen</button>
+        </form>
+    </div>
+
+</body>
+</html>

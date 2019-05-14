@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <style>
+        input {
+            padding: 5px;
+            font-size: 1em;
+            width: 95%;
+            filter: invert(100%);
+        }
+
+        body {
+            text-align: center;
+            font-family: verdana;
+            background-color: black;
+            color: white;
+        }
+
+        a {
+            color: #1fa3ec;
+        }
+
+        button {
+            border: 0;
+            margin-top: 1px;
+            margin-bottom: 2px;
+            border-radius: 0.3em;
+            background-color: #1fa3ec;
+            color: #fff;
+            line-height: 2.4em;
+            font-size: 1.2em;
+            width: 100%;
+            display: block;
+        }
+
+        .q {
+            float: right;
+        }
+
+        .s {
+            display: inline-block;
+            width: 14em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        #wl {
+            line-height: 1.5em;
+        }
+
+        table {
+            border: 1px solid gray;
+            border-spacing: 0;
+            width: 100%;
+        }
+
+            table .th {
+                background-color: gray;
+                text-align:center;
+            }
+
+            table .ti {
+                background-color: gray;
+                width:10px;
+            }
+
+        .tdTemp {
+            width: 20%;
+            text-align: right;
+        }
+        .tdPumpe {
+            text-align: center;
+        }
+        td {
+            padding-right: 3px;
+            padding-left: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h2 id="h2">Glycol Chiller<br />Status</h2>
+    <div style='text-align:left;display:inline-block;width:300px;padding:5px'>
+        <table>
+            <tr class="th">
+                <td class="ti"></td>
+                <td class="ti">
+                    Soll
+                </td>
+                <td class="ti">
+                    Ist
+                </td>
+                <td class="ti">
+                    Pumpe
+                </td>
+                <td>
+                    Status
+                </td>
+            </tr>
+            <tr>
+                <td class="ti">1</td>
+                <td class="tdTemp">16,2</td>
+                <td class="tdTemp">15,4</td>
+                <td class="tdPumpe">an</td>
+                <td>OK</td>
+            </tr>
+            <tr>
+                <td class="ti">2</td>
+                <td class="tdTemp"></td>
+                <td class="tdTemp"></td>
+                <td class="tdPumpe">aus</td>
+                <td>DS ERROR</td>
+            </tr>
+            <tr>
+                <td class="ti">3</td>
+                <td class="tdTemp"></td>
+                <td class="tdTemp"></td>
+                <td class="tdPumpe">aus</td>
+                <td>ADM DOWN</td>
+            </tr>
+            <tr>
+                <td class="ti">4</td>
+                <td class="tdTemp"></td>
+                <td class="tdTemp"></td>
+                <td class="tdPumpe">aus</td>
+                <td>ADM DOWN</td>
+            </tr>
+        </table>
+        <table>
+            <tr class="th">
+                <td class="ti"></td>
+                <td>
+                    Sud
+                </td>
+            </tr>
+            <tr>
+                <td class="ti">1</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="ti">2</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="ti">3</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="ti">4</td>
+                <td></td>
+            </tr>
+        </table>
+        <h6>
+            letztes Update vor
+            <span id="ut"></span>
+            <span id="status"></span>
+        </h6>
+        <hr />
+        <form style="margin:0; padding:0;" method="get" action="/index.html">
+            <button type="submit" id="btnUpdate" formaction="/index.html">Aktualisieren</button>
+            <button type="submit" id="btnConfig" formaction="/settings.html">Konfiguration</button>
+            <button type="submit" id="btnWiFi" formaction="/wifi.html" formmethod="post">WiFi Einstellungen</button>
+        </form>
+    </div>
+
+    <!--<script>
+        function g(i) { return document.getElementById(i) };
+        var statusRequest, updateTime;
+        updateTime = 0;
+        function displayTime(seconds)
+        {
+            var numdays = Math.floor(seconds / 86400);
+            var numhours = Math.floor((seconds % 86400) / 3600);
+            var numminutes = Math.floor(((seconds % 86400) % 3600) / 60);
+            var numseconds = ((seconds % 86400) % 3600) % 60;
+            var s = "";
+            if (numdays > 0) s += numdays + "Tage, ";
+            if (numhours > 0 || numdays > 0) s += ((numdays > 0 && numhours < 10) ? "0" +numhours : numhours) + ":";
+            if (numminutes > 0 || numhours > 0 || numdays > 0) s += (((numdays > 0 || numhours > 0) && numminutes < 10) ? "0" + numminutes : numminutes);
+            if (numhours == 0 && numdays == 0) 
+            {
+                if (numminutes > 0)
+                {
+                    s += ":";
+                    s += (numseconds < 10) ? "0" + numseconds : numseconds;
+                    s += " Minuten"
+                }
+                else s += numseconds + " Sekunden.";
+            }
+            if (numhours > 0 || numdays > 0) 
+            {
+                s += numdays > 0 ? (numdays > 1 ? " Tage" : " Tag") : " Stunden";
+            }
+            return s;
+        }
+        setInterval(function () { g("ut").innerHTML = displayTime(++updateTime); }, 1000);
+    </script>
+        -->
+    <script>
+
+                function g(i) { return document.getElementById(i) };
+                var statusRequest, updateTime;
+                updateTime = 0;
+                function displayTime(seconds)
+                {
+                    var numdays = Math.floor(seconds / 86400);
+                    var numhours = Math.floor((seconds % 86400) / 3600);
+                    var numminutes = Math.floor(((seconds % 86400) % 3600) / 60);
+                    var numseconds = ((seconds % 86400) % 3600) % 60;
+                    var s = "";
+                    if (numdays > 0) s += numdays + ((numdays == 1) ? "Tag, " : "Tage, ");
+                    if (numhours > 0 || numdays > 0) s += ((numdays > 0 && numhours < 10) ? "0" +numhours : numhours) + ":";
+                    if (numminutes > 0 || numhours > 0 || numdays > 0) s += (((numdays > 0 || numhours > 0) && numminutes < 10) ? "0" + numminutes : numminutes);
+                    if (numhours == 0 && numdays == 0) 
+                    {
+                        if (numminutes > 0)
+                        {
+                            s += ":";
+                            s += (numseconds < 10) ? "0" + numseconds : numseconds;
+                            s += (numseconds == 1) ? " Minute" : " Minuten"
+                        }
+                        else s += numseconds + (numseconds == 1 ? " Sekunde." : " Sekunden.");
+                    }
+                    if (numhours > 0 || numdays > 0) 
+                    {
+                        s += numdays > 0 ? (numdays > 1 ? " Tage" : " Tag") : " Stunden.";
+                    }
+                    return s;
+                }
+                setInterval(function () { g("ut").innerHTML = displayTime(++updateTime); }, 1000);
+            </script>"
+    </body>
+</html>
