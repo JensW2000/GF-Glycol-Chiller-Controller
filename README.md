@@ -3,6 +3,7 @@
 
 Kann im Accesspoint Modus betrieben werden oder als WiFi Device in das Heim-WLAN eingebunden werden. 
 Kann keine WiFi Verbindung aufgebaut werden erfolgt ein automatischer Fallback in den AccessPoint Modus. 
+Das Senden der Daten an Ubidots wird unterstützt. Pro aktiviertem Port werden Soll- und Isttemperatur an den Cloudservice übertragen.
 
 Accesspoint Standardzugang (änderbar):  
 SSID: GlyCon  
